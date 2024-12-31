@@ -2,4 +2,24 @@
 
 Vite para inicializar o projeto.
 
+APÓS O GIT CLONE RODAR: 
 
+1 - npm i
+INSTALAR DEPENDENCIAS
+
+2- npm run dev
+RODAR APP NA WEB
+
+--------------------
+
+ROTAS PÚBLICAS: 
+/login
+/register
+
+ROTAS PRIVADAS
+/
+
+--------------------
+DOCUMENTAÇÃO TAILWIND (CSS)
+https://tailwindcss.com/
+https://flowbite.com/docs/components/spinner/
