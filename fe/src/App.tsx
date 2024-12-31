@@ -1,11 +1,26 @@
-import React from "react"
-import { GlobalStyles } from "./styles/GlobalStyles"
+// import { QueryClient, QueryClientProvider } from "@tanstack/query-core";
+import { Router } from "./Router";
+// import { Toaster } from "react-hot-toast";
+// import { AuthProvider } from "./app/contexts/AuthContext";
+
+// const queryClient = new QueryClient({
+//   defaultOptions: {
+//     queries: {
+//       retry: false,
+//       refetchOnWindowFocus: false
+//     }
+//   }
+// });
 
 export function App() {
   return (
-    <React.Fragment>
-      <GlobalStyles />
-      <h1>APP</h1>
-    </React.Fragment>
-  )
+    <>
+     {/* <QueryClientProvider client={queryClient}> */}
+      {/* <AuthProvider> */}
+        <Router />
+        {/* <Toaster /> */}
+      {/* </AuthProvider> */}
+    {/* </QueryClientProvider> */}
+    </>
+  );
 }
