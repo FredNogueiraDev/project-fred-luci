@@ -1,5 +1,6 @@
 // import { QueryClient, QueryClientProvider } from "@tanstack/query-core";
 import { Router } from "./Router";
+import { FirebaseProvider } from "./contexts/FireBaseContext";
 // import { Toaster } from "react-hot-toast";
 // import { AuthProvider } from "./app/contexts/AuthContext";
 
@@ -14,13 +15,13 @@ import { Router } from "./Router";
 
 export function App() {
   return (
-    <>
+    <FirebaseProvider>
      {/* <QueryClientProvider client={queryClient}> */}
       {/* <AuthProvider> */}
         <Router />
         {/* <Toaster /> */}
       {/* </AuthProvider> */}
     {/* </QueryClientProvider> */}
-    </>
+    </FirebaseProvider>
   );
 }
