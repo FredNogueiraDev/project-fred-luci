@@ -1,32 +1,10 @@
-import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
-import { auth } from "../../../Services/firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
 import { Input } from "../../../components/Input";
 import { Button } from "../../../components/Button";
+import { useLoginController } from "./useLoginController";
 
-export function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [,setError] = useState('');
-  const navigate = useNavigate();
-
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-  
-  try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, password)
-    const user = userCredential.user;
-    console.log('Usuário autenticado: ', user)
-
-    navigate('/dashboard');
-  } catch (err: any){
-    setError(err.message);
-
-    console.log('ERRO: ', err.message)
-  };
-};
+export  function Login() {
+  const { handleSubmit, register, errors, isPending } = useLoginController()
 
   return (
     <div className="flex flex-col gap-8 w-full items-center">
@@ -37,22 +15,24 @@ export function Login() {
       </header>
 
       <div className="flex flex-col gap-1 w-full items-center px-3">
-        <form className="flex flex-col gap-2 w-full" onSubmit={handleLogin}>
+        <form className="flex flex-col gap-2 w-full" onSubmit={handleSubmit}>
           <Input
             type="email"
             placeholder="Insira o seu e-mail..."
             maxLength={254}
-            onChange={(e) => setEmail(e.target.value)}
+            {...register('email')}
           />
+          {errors.email && <span className="text-purple-normal text-xs">{errors.email.message}</span>}
 
           <Input
             type="password"
             placeholder="Insira a sua senha..."
             maxLength={20}
-            onChange={(e) => setPassword(e.target.value)}
+            {...register('password')}
           />
+          {errors.password && <span className="text-purple-normal text-xs">{errors.password.message}</span>}
 
-          <Button type="submit">Entrar</Button>
+          <Button isLoading={isPending} type="submit">Entrar</Button>
         </form>
 
         <p className="space-x-2 mt-3">

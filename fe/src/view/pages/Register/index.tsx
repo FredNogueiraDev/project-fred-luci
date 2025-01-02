@@ -1,34 +1,10 @@
-import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
-import { auth } from "../../../Services/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
 import { Input } from "../../../components/Input";
 import { Button } from "../../../components/Button";
+import { useRegisterController } from './useRegisterController';
 
 export function Register() {
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [,setError] = useState('');
-  const navigate = useNavigate();
-
-    const handleCreate = async (e: React.FormEvent) => {
-      e.preventDefault();
-    
-    try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password)
-      const user = userCredential.user;
-      console.log('Usuário autenticado: ', user)
-  
-      navigate('/login');
-    } catch (err: any){
-      setError(err.message);
-  
-      console.log('ERRO: ', err.message)
-    };
-  };
-  
+    const { handleSubmit, register, errors, isPending } = useRegisterController()
 
   return (
     <div className="flex flex-col gap-8 w-full items-center">
@@ -39,28 +15,32 @@ export function Register() {
       </header>
 
       <div className="flex flex-col gap-1 w-full items-center px-3">
-        <form className="flex flex-col gap-2 w-full" onSubmit={handleCreate}>
+        <form className="flex flex-col gap-2 w-full" onSubmit={handleSubmit}>
           <Input
             type="email"
             placeholder="Insira o seu e-mail..."
             maxLength={254}
-            onChange={(e) => setEmail(e.target.value)}
+            {...register('email')}
           />
+          {errors.email && <span className="text-purple-normal text-xs">{errors.email.message}</span>}
 
           <Input
             type="password"
             placeholder="Insira a sua senha..."
             maxLength={20}
-            onChange={(e) => setPassword(e.target.value)}
+            {...register('password')}
           />
+          {errors.password && <span className="text-purple-normal text-xs">{errors.password.message}</span>}
 
           <Input
             type="password"
             placeholder="Repita a sua senha..."
             maxLength={20}
+            {...register('confirmPassword')}
           />
+          {errors.confirmPassword && <span className="text-purple-normal text-xs">{errors.confirmPassword.message}</span>}
 
-          <Button type="submit">Registrar</Button>
+          <Button isLoading={isPending} type="submit">Registrar</Button>
         </form>
 
         <p className="space-x-2 mt-3">

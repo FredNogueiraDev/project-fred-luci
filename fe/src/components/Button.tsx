@@ -1,4 +1,5 @@
 import { ComponentProps } from "react";
+import { Spinner } from "./Spinner";
 
 interface ButtonProps extends ComponentProps<'button'> {
   isLoading?: boolean;
@@ -14,6 +15,7 @@ export function Button({isLoading, disabled, children, ...props}: ButtonProps) {
     {...props}
     >
     {!isLoading && children}
+    {isLoading && <Spinner className="h-6 w-6 mx-auto my-0 text-black-300 animate-spin fill-purple-normal" />    }
     </button>
   )
 }
