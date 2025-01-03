@@ -9,6 +9,6 @@ export const logout = async () => {
     return await signOut(auth);
 };
 
-export const createUser = async (auth, email, password) => {
+export const createUser = async (email, password) => {
     return await createUserWithEmailAndPassword(auth, email, password);
 };

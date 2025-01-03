@@ -1,4 +1,3 @@
-import { auth } from "../../../Services/firebase";
 import { createUser } from "../../../Services/auth";
 
 export interface RegisterParams {
@@ -7,7 +6,7 @@ export interface RegisterParams {
 }
 
 export async function register(params: RegisterParams){
-  const userCredential = await createUser(auth, params.email, params.password)
+  const userCredential = await createUser(params.email, params.password)
 
   return userCredential;
 }
