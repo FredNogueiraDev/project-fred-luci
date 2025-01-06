@@ -2,6 +2,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { AuthGuard } from "./AuthGuard";
 import { Login } from "../view/pages/Login";
 import { Register } from "../view/pages/Register";
+import { NotFound } from "../view/pages/NotFound";
 import { Dashboard } from "../view/pages/Dashboard";
 import { AuthLayout } from "../view/layouts/AuthLayouts";
 
@@ -16,6 +17,9 @@ export function Router() {
             <Route path="/register" element={<Register />}></Route>
           </Route>
         </Route>
+
+        {/* Página 404 */}
+        <Route path="*" element={<NotFound />} />
 
         <Route element={<AuthGuard isPrivate />}>
           <Route path="/" element={<Dashboard />}></Route>
