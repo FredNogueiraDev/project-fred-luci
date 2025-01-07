@@ -21,6 +21,10 @@ export function Router() {
 
         <Route element={<AuthGuard isPrivate />}>
           <Route path="/" element={<Dashboard />}></Route>
+          <Route path="/orders" element={<Dashboard />}></Route>
+          <Route path="/menu" element={<Dashboard />}></Route>
+          <Route path="/users" element={<Dashboard />}></Route>
+          <Route path="/profile" element={<Dashboard />}></Route>
           <Route path="/teste" element={<PageLoader />}></Route> {/* APENAS TESTE! TELA DE SPLASH PARA TRANSIÇÃO DE ROTAS! */}
         </Route>
 
