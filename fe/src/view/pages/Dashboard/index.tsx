@@ -1,11 +1,12 @@
-import { logout } from "../../../Services/auth";
-
+import { Navbar } from "../../../components/Navbar";
 
 export function Dashboard() {
   return (
-    <>
-      <h1>Dashboard Page</h1>
-      <button onClick={logout}>LOGOUT</button>
-    </>
-  )
+    <div className="text-white-900 w-full h-full flex justify-center items-center">
+      <Navbar></Navbar>
+      <div className="w-full h-full flex flex-col bg-gray-0">
+
+      </div>
+    </div>
+  );
 }

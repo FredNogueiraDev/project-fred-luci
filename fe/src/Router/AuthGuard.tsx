@@ -5,7 +5,7 @@ interface AuthGuardProps {
 }
 
 export function AuthGuard({isPrivate}: AuthGuardProps) {
-  const signedIn = false; //NÃO ESTÁ LOGADO
+  const signedIn = localStorage.getItem("loggedIn") === "true"; // SIMULAÇÃO DE LOGIN!!!
 
   if(signedIn && !isPrivate) {
     return <Navigate to='/' replace />

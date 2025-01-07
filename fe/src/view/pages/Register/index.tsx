@@ -9,7 +9,7 @@ export function Register() {
   return (
     <div className="flex flex-col gap-8 w-full items-center">
       <header>
-        <h1 className="text-2xl font-medium">
+        <h1 className="text-xl font-medium">
           Crie uma nova conta
         </h1>
       </header>

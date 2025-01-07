@@ -17,6 +17,7 @@ export default {
           darker: "#1d003b",
         },
         black: "#333333",
+        "gray-0": "rgba(204, 204, 204, 0.25)",
         "gray-1": "#666666",
         "gray-2": "#999999",
         "gray-3": "#CCCCCC",
