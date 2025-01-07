@@ -1,15 +1,14 @@
 import { Navbar } from "../../../components/Navbar";
 import { Header } from "../../../components/Header";
 
-import HomeIcon from "../../../assets/icons/home.svg";
-import Refresh from "../../../assets/icons/refresh.svg";
+import ProfileIcon from "../../../assets/icons/profile.svg";
 
-export function Dashboard() {
+export function Profile() {
   return (
     <div className="text-white-900 w-full h-full flex justify-center items-center">
       <Navbar />
       <main className="w-full h-full flex flex-col bg-gray-0 p-5">
-        <Header title="Home" subtitle="Acompanhe os pedidos dos clientes" icon={HomeIcon} textBtn="Reiniciar o dia" hrefBtn="#" iconBtn={Refresh} />
+        <Header title="Meu Perfil" subtitle="Gerencie e atualize os dados da casa" icon={ProfileIcon} />
       </main>
     </div>
   );

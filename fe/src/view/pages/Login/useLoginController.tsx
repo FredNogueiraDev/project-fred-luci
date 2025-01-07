@@ -43,7 +43,7 @@ export function useLoginController() {
 
       console.log('Usuário autenticado: ', user)
 
-      localStorage.setItem("loggedIn", "true");
+      localStorage.setItem("loggedIn", "true");//TEMPORÁRIO
 
       toast.success('Sucesso!');
       navigate('/');

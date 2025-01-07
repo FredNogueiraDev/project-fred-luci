@@ -6,6 +6,10 @@ import { NotFound } from "../view/pages/NotFound";
 import { Dashboard } from "../view/pages/Dashboard";
 import { AuthLayout } from "../view/layouts/AuthLayouts";
 import { PageLoader } from "../components/PageLoader";
+import { Orders } from "../view/pages/Dashboard/orders";
+import { Menu } from "../view/pages/Dashboard/menu";
+import { Users } from "../view/pages/Dashboard/users";
+import { Profile } from "../view/pages/Dashboard/profile";
 
 export function Router() {
   return (
@@ -21,10 +25,10 @@ export function Router() {
 
         <Route element={<AuthGuard isPrivate />}>
           <Route path="/" element={<Dashboard />}></Route>
-          <Route path="/orders" element={<Dashboard />}></Route>
-          <Route path="/menu" element={<Dashboard />}></Route>
-          <Route path="/users" element={<Dashboard />}></Route>
-          <Route path="/profile" element={<Dashboard />}></Route>
+          <Route path="/orders" element={<Orders />}></Route>
+          <Route path="/menu" element={<Menu />}></Route>
+          <Route path="/users" element={<Users />}></Route>
+          <Route path="/profile" element={<Profile />}></Route>
           <Route path="/teste" element={<PageLoader />}></Route> {/* APENAS TESTE! TELA DE SPLASH PARA TRANSIÇÃO DE ROTAS! */}
         </Route>
 
