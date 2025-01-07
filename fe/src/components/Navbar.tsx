@@ -1,12 +1,13 @@
 import { Link, useLocation } from "react-router-dom";
 
-import logo1 from "../assets/logo/temp-logo.svg";
-import home from "../assets/icons/home.svg";
-import order from "../assets/icons/order.svg";
-import menu from "../assets/icons/menu.svg";
-import users from "../assets/icons/users.svg";
-import profile from "../assets/icons/profile.svg";
-import logoff from "../assets/icons/logoff.svg";
+import logo from "../assets/logo/temp-logo.svg";
+
+import { HomeIcon } from "../assets/icons/icons_svg/home";
+import { OrderIcon } from "../assets/icons/icons_svg/order";
+import { MenuIcon } from "../assets/icons/icons_svg/menu";
+import { UsersIcon } from "../assets/icons/icons_svg/users";
+import { ProfileIcon } from "../assets/icons/icons_svg/profile";
+import { LogoffIcon } from "../assets/icons/icons_svg/logoff";
 
 import { Spinner } from "./Spinner";
 
@@ -19,15 +20,15 @@ export function Navbar() {
   };
 
   const primaryLinks = [
-    { to: "/", src: home, alt: "Home", label: "Home" },
-    { to: "/orders", src: order, alt: "Histórico", label: "Histórico" },
-    { to: "/menu", src: menu, alt: "Cardápio", label: "Cardápio" },
-    { to: "/users", src: users, alt: "Usuários", label: "Usuários" },
+    { to: "/", Icon: HomeIcon, alt: "Home", label: "Home" },
+    { to: "/orders", Icon: OrderIcon, alt: "Histórico", label: "Histórico"},
+    { to: "/menu", Icon: MenuIcon, alt: "Cardápio", label: "Cardápio" },
+    { to: "/users", Icon: UsersIcon, alt: "Usuários", label: "Usuários" },
   ];
 
   const secondaryLinks = [
-    { to: "/profile", src: profile, alt: "Meu Perfil", label: "Meu Perfil" },
-    { to: "/login", src: logoff, alt: "Sair", label: "Sair", onClick: handleLogout },
+    { to: "/profile", Icon: ProfileIcon, alt: "Meu Perfil", label: "Meu Perfil" },
+    { to: "/login", Icon: LogoffIcon, alt: "Sair", label: "Sair", onClick: handleLogout },
   ];
 
   return (
@@ -43,39 +44,42 @@ export function Navbar() {
       <div className="flex flex-col justify-around h-full">
         <div className="flex items-center w-full justify-center">
           <Link to="/" >
-            <img src={logo1} alt="Logo" className="h-9 w-9" />
+            <img src={logo} alt="Logo" className="h-9 w-9" />
           </Link>
         </div>
         <div className="flex flex-col gap-6 items-center">
-          {primaryLinks.map(({ to, src, alt, label }) => (
-            <Link
-              key={to}
-              to={to}
-              className={`flex flex-col w-14 justify-center items-center gap-2 ${
+
+        {primaryLinks.map(({ to, Icon, alt, label }) => (
+          <Link
+            key={to}
+            to={to}
+            className={`flex flex-col w-14 justify-center items-center gap-2 ${
               location.pathname === to
-              ? "text-purple-normal"
-              : "text-gray-1 hover:text-purple-darkHover"
-              }`}
-            >
-              <img className="h-6 w-6" src={src} alt={alt} />
-              <span className="font-medium text-xs">{label}</span>
-            </Link>
-          ))}
+                ? "text-purple-normal"
+                : "text-gray-1 hover:text-purple-normal"
+            }`}
+          >
+            <Icon className="h-6 w-6" aria-label={alt} />
+            <span className="font-medium text-xs">{label}</span>
+          </Link>
+        ))}
+
+
         </div>
         <div className="flex flex-col gap-6 items-center">
-          {secondaryLinks.map(({ to, src, alt, label, onClick }) => (
+          {secondaryLinks.map(({ to, Icon, alt, label, onClick }) => (
             <Link
               key={to}
               to={to}
               onClick={onClick}
               className={`flex flex-col w-14 justify-center items-center gap-2 ${
               location.pathname === to
-              ? "text-purple-dark"
-              : "text-gray-1 hover:text-purple-darkHover"
+              ? "text-purple-normal"
+              : "text-gray-1 hover:text-purple-normal"
               }`}
             >
-              <img className="h-6 w-6" src={src} alt={alt} />
-              <span className="font-medium text-xs">{label}</span>
+            <Icon className="h-6 w-6" aria-label={alt} />
+            <span className="font-medium text-xs">{label}</span>
             </Link>
           ))}
         </div>
