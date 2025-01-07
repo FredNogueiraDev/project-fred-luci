@@ -9,10 +9,8 @@ import { UsersIcon } from "../assets/icons/icons_svg/users";
 import { ProfileIcon } from "../assets/icons/icons_svg/profile";
 import { LogoffIcon } from "../assets/icons/icons_svg/logoff";
 
-import { Spinner } from "./Spinner";
-
 export function Navbar() {
-  const isLoading = false;
+  const isLoading = false; //TEMPORÁRIO
   const location = useLocation();
 
   const handleLogout = () => { //TEMPORÁRIO
@@ -35,8 +33,13 @@ export function Navbar() {
     <nav className="h-full min-w-24">
     {
       isLoading && (
-        <div className="flex m-full h-full justify-center items-center">
-        <Spinner className="h-8 w-8 text-black-300 animate-spin fill-white-300" />
+        <div className="flex flex-col h-full w-full animate-pulse justify-center gap-6 items-center">
+          {Array.from({ length: 5 }).map((_, index) => (
+            <div key={index}>
+              <div className="h-11 w-11 bg-gray-0 rounded col-span-2 my-2 mx-auto"></div>
+              <div className="h-5 w-20 bg-gray-0 rounded col-span-2"></div>
+            </div>
+          ))}
         </div>
       )
     }
