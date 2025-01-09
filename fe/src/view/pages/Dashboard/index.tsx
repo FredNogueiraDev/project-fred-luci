@@ -14,15 +14,17 @@ export function Dashboard() {
     <div className="text-white-900 w-full h-full flex justify-center items-center">
       <Navbar />
       <main className="w-full h-full flex flex-col bg-gray-0 p-5">
-        <Header
-          title="Home"
-          subtitle="Acompanhe os pedidos dos clientes"
-          icon={HomeIcon}
-          textBtn="Reiniciar o dia"
-          hrefBtn="#"
-          iconBtn={Refresh}
-          onClick={handleOpenRefreshModal}
-        />
+      <Header
+        title="Home"
+        subtitle="Acompanhe os pedidos dos clientes"
+        icon={HomeIcon}
+        rightAction={{
+          text: "Reiniciar o dia",
+          href: "#",
+          icon: Refresh,
+          onClick: handleOpenRefreshModal,
+        }}
+      />
 
         <RefreshModal open={isRefreshModalOpen} onClose={handleCloseRefreshModal}/>
       </main>
