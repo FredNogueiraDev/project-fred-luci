@@ -5,9 +5,10 @@ interface HeaderProps {
   textBtn?: string
   hrefBtn?: string
   iconBtn?: string
+  onClick():void;
 }
 
-export function Header ({ title, subtitle, icon, textBtn, hrefBtn, iconBtn}: HeaderProps) {
+export function Header ({ title, subtitle, icon, textBtn, hrefBtn, iconBtn, onClick}: HeaderProps) {
   return (
     <header className="font-medium p-5 flex justify-between items-cente">
       <div className="flex flex-col ">
@@ -18,7 +19,7 @@ export function Header ({ title, subtitle, icon, textBtn, hrefBtn, iconBtn}: Hea
         <span className="text-sm font-normal text-gray-1">{subtitle}</span>
       </div>
       <div className="my-auto">
-        <a className='flex gap-2 text-purple-normal text-sm' href={hrefBtn}>
+        <a className='flex gap-2 text-purple-normal text-sm' onClick={onClick} href={hrefBtn}>
           <img className="w-5" src={iconBtn} />
           {textBtn}
         </a>

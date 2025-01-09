@@ -3,6 +3,7 @@ import { Router } from "./Router";
 import { FirebaseProvider } from "./contexts/FireBaseContext";
 import { Toaster } from "react-hot-toast";
 import { QueryClientProvider } from "@tanstack/react-query";
+import { Theme } from "@radix-ui/themes";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -17,8 +18,15 @@ export function App() {
   return (
     <FirebaseProvider>
      <QueryClientProvider client={queryClient}>
-        <Router />
-        <Toaster />
+      <Theme
+        accentColor="blue" // Escolha uma cor de destaque
+        radius="medium"    // Controle de bordas arredondadas
+        appearance="light" // Tema claro
+        className="text-white-900 w-full h-full flex justify-center items-center"
+      >
+          <Router />
+          <Toaster />
+      </Theme>
     </QueryClientProvider>
     </FirebaseProvider>
   );

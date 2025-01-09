@@ -3,13 +3,28 @@ import { Header } from "../../../components/Header";
 
 import HomeIcon from "../../../assets/icons/home.svg";
 import Refresh from "../../../assets/icons/refresh.svg";
+import { RefreshModal } from "./Modals/RefreshModal";
+import { useModalController } from "./Modals/useModalController";
+
 
 export function Dashboard() {
+  const {handleOpenRefreshModal, handleCloseRefreshModal, isRefreshModalOpen} = useModalController();
+
   return (
     <div className="text-white-900 w-full h-full flex justify-center items-center">
       <Navbar />
       <main className="w-full h-full flex flex-col bg-gray-0 p-5">
-        <Header title="Home" subtitle="Acompanhe os pedidos dos clientes" icon={HomeIcon} textBtn="Reiniciar o dia" hrefBtn="#" iconBtn={Refresh} />
+        <Header
+          title="Home"
+          subtitle="Acompanhe os pedidos dos clientes"
+          icon={HomeIcon}
+          textBtn="Reiniciar o dia"
+          hrefBtn="#"
+          iconBtn={Refresh}
+          onClick={handleOpenRefreshModal}
+        />
+
+        <RefreshModal open={isRefreshModalOpen} onClose={handleCloseRefreshModal}/>
       </main>
     </div>
   );
