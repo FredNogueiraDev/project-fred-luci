@@ -18,3 +18,7 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #151A20;
 }
+
+.boxShadowNone {
+  box-shadow: none !important;
+}

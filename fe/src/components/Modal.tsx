@@ -17,7 +17,7 @@ export function Modal({ open, children, onClose, title, rightAction }: ModalProp
           className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50"
         />
         <Dialog.Content
-          className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6 space-y-10 bg-white rounded-2xl z-[51] shadow-[0px_11px_20px_0px_rgba(0,0,0,0.10)] w-full max-w-[400px] outline-none"
+          className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6 space-y-10 bg-white rounded-2xl z-[51] shadow-[0px_11px_20px_0px_rgba(0,0,0,0.10)] w-full max-w-[400px] outline-none" aria-describedby={undefined}
         >
           <header className="h-12 flex items-center justify-between text-gray-800">
             <button
