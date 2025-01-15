@@ -18,12 +18,7 @@ export function App() {
   return (
     <FirebaseProvider>
      <QueryClientProvider client={queryClient}>
-      <Theme
-        accentColor="blue" // Escolha uma cor de destaque
-        radius="medium"    // Controle de bordas arredondadas
-        appearance="light" // Tema claro
-        className="text-white-900 w-full h-full flex justify-center items-center"
-      >
+      <Theme className="w-full h-full flex justify-center items-center">
           <Router />
           <Toaster />
       </Theme>

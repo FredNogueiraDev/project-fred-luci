@@ -9,7 +9,7 @@ import { UsersIcon } from "../assets/icons/icons_svg/users";
 import { ProfileIcon } from "../assets/icons/icons_svg/profile";
 import { LogoffIcon } from "../assets/icons/icons_svg/logoff";
 
-export function Navbar() {
+export function Sidebar() {
   const isLoading = false; //TEMPORÁRIO
   const location = useLocation();
 
@@ -30,7 +30,7 @@ export function Navbar() {
   ];
 
   return (
-    <nav className="h-full min-w-24">
+    <nav className="min-w-24 h-screen fixed top-0 left-0">
     {
       isLoading && (
         <div className="flex flex-col h-full w-full animate-pulse justify-center gap-6 items-center">

@@ -1,4 +1,4 @@
-import { Navbar } from "../../../components/Navbar";
+import { Sidebar } from "../../../components/Sidebar";
 import { Header } from "../../../components/Header";
 
 import HomeIcon from "../../../assets/icons/home.svg";
@@ -12,8 +12,8 @@ export function Dashboard() {
 
   return (
     <div className="text-white-900 w-full h-full flex justify-center items-center">
-      <Navbar />
-      <main className="w-full h-full flex flex-col bg-gray-0 p-5">
+      <Sidebar />
+      <main className="w-full h-full flex flex-col bg-gray-0 p-5 ml-24">
       <Header
         title="Home"
         subtitle="Acompanhe os pedidos dos clientes"

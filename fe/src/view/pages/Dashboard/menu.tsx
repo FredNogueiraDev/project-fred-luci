@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
-import { Navbar } from "../../../components/Navbar";
+import { Sidebar } from "../../../components/Sidebar";
 import { Header } from "../../../components/Header";
+import { Footer } from "../../../components/Footer";
 import { Flex, Spinner, TabNav } from "@radix-ui/themes";
 import { MenuTable } from "./Tables/MenuTable";
 import { CategorieTable } from "./Tables/CategorieTable";
@@ -66,6 +67,111 @@ export function Menu() {
       category: "🍕 Pizza",
       price: "R$ 21,00",
     },
+    {
+      id: 6,
+      image: { img },
+      title: "Portuguesa",
+      category: "🍕 Pizza",
+      price: "R$ 50,00",
+    },
+    {
+      id: 7,
+      image: { img },
+      title: "Frango com Catupiry",
+      category: "🍕 Pizza",
+      price: "R$ 55,00",
+    },
+    {
+      id: 8,
+      image: { img },
+      title: "Pepperoni",
+      category: "🍕 Pizza",
+      price: "R$ 60,00",
+    },
+    {
+      id: 9,
+      image: { img },
+      title: "Napolitana",
+      category: "🍕 Pizza",
+      price: "R$ 45,00",
+    },
+    {
+      id: 10,
+      image: { img },
+      title: "Rúcula com Tomate Seco",
+      category: "🍕 Pizza",
+      price: "R$ 52,00",
+    },
+    {
+      id: 11,
+      image: { img },
+      title: "Baiana",
+      category: "🍕 Pizza",
+      price: "R$ 48,00",
+    },
+    {
+      id: 12,
+      image: { img },
+      title: "Brócolis com Bacon",
+      category: "🍕 Pizza",
+      price: "R$ 53,00",
+    },
+    {
+      id: 13,
+      image: { img },
+      title: "Palmito",
+      category: "🍕 Pizza",
+      price: "R$ 46,00",
+    },
+    {
+      id: 14,
+      image: { img },
+      title: "Carne Seca com Catupiry",
+      category: "🍕 Pizza",
+      price: "R$ 58,00",
+    },
+    {
+      id: 15,
+      image: { img },
+      title: "Vegetariana",
+      category: "🍕 Pizza",
+      price: "R$ 47,00",
+    },
+    {
+      id: 16,
+      image: { img },
+      title: "Toscana",
+      category: "🍕 Pizza",
+      price: "R$ 49,00",
+    },
+    {
+      id: 17,
+      image: { img },
+      title: "Mexicana",
+      category: "🍕 Pizza",
+      price: "R$ 54,00",
+    },
+    {
+      id: 18,
+      image: { img },
+      title: "Alho e Óleo",
+      category: "🍕 Pizza",
+      price: "R$ 42,00",
+    },
+    {
+      id: 19,
+      image: { img },
+      title: "Provolone",
+      category: "🍕 Pizza",
+      price: "R$ 51,00",
+    },
+    {
+      id: 20,
+      image: { img },
+      title: "Camarão",
+      category: "🍕 Pizza",
+      price: "R$ 75,00",
+    }
   ]);
 
   const [categories, setCategories] = useState([
@@ -90,9 +196,9 @@ export function Menu() {
   ]);
 
   return (
-    <div className="text-white-900 w-full h-full flex justify-center items-center">
-      <Navbar />
-      <main className="w-full h-full flex flex-col bg-gray-0 p-5">
+    <div className="w-full h-screen flex">
+      <Sidebar />
+      <main className="w-full flex flex-col bg-gray-0 pt-5 px-5 ml-24 overflow-y-auto">
         <Header
           title="Cardápio"
           subtitle="Gerencie os produtos do seu estabelecimento"
@@ -106,7 +212,7 @@ export function Menu() {
         )}
 
         {!isLoading && (
-          <div className="h-full p-5">
+          <div className="h-auto">
             <Flex direction="column" gap="4" pb="2" className="mb-6">
               <TabNav.Root size="2" color="purple">
                 <TabNav.Link href="#products" className={activeTab === 'products' ? '!text-purple-normal !font-medium' : ''}>
@@ -131,9 +237,12 @@ export function Menu() {
               </a>
             </div>
 
-            {activeTab === 'products' ? <MenuTable data={produtcts} /> : <CategorieTable data={categories} />}
+            <div className="min-h-[64vh]">
+              {activeTab === 'products' ? <MenuTable data={produtcts} /> : <CategorieTable data={categories} />}
+            </div>
 
             <RefreshModal open={isRefreshModalOpen} onClose={handleCloseRefreshModal}/>
+            <Footer />
           </div>
         )}
       </main>
