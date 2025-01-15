@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Sidebar } from "../../../components/Sidebar";
 import { Header } from "../../../components/Header";
 import { Footer } from "../../../components/Footer";
-import { Flex, Spinner, TabNav } from "@radix-ui/themes";
+import { Flex, TabNav } from "@radix-ui/themes";
 import { MenuTable } from "./Tables/MenuTable";
 import { CategorieTable } from "./Tables/CategorieTable";
 
@@ -38,6 +38,8 @@ export function Menu() {
       title: "Quatro Queijos",
       category: "🍕 Pizza",
       price: "R$ 40,00",
+      availability: true,
+      rating: 4.5,
     },
     {
       id: 2,
@@ -45,6 +47,8 @@ export function Menu() {
       title: "Marguerita",
       category: "🍕 Pizza",
       price: "R$ 43,00",
+      availability: true,
+      rating: 4.8,
     },
     {
       id: 3,
@@ -52,6 +56,8 @@ export function Menu() {
       title: "Mussarela",
       category: "🍕 Pizza",
       price: "R$ 41,00",
+      availability: true,
+      rating: 4.3,
     },
     {
       id: 4,
@@ -59,6 +65,8 @@ export function Menu() {
       title: "Calabresa",
       category: "🍕 Pizza",
       price: "R$ 70,00",
+      availability: true,
+      rating: 4.7,
     },
     {
       id: 5,
@@ -66,6 +74,8 @@ export function Menu() {
       title: "Marinara",
       category: "🍕 Pizza",
       price: "R$ 21,00",
+      availability: true,
+      rating: 3.9,
     },
     {
       id: 6,
@@ -73,6 +83,8 @@ export function Menu() {
       title: "Portuguesa",
       category: "🍕 Pizza",
       price: "R$ 50,00",
+      availability: true,
+      rating: 4.2,
     },
     {
       id: 7,
@@ -80,6 +92,8 @@ export function Menu() {
       title: "Frango com Catupiry",
       category: "🍕 Pizza",
       price: "R$ 55,00",
+      availability: true,
+      rating: 4.6,
     },
     {
       id: 8,
@@ -87,6 +101,8 @@ export function Menu() {
       title: "Pepperoni",
       category: "🍕 Pizza",
       price: "R$ 60,00",
+      availability: false,
+      rating: 4.9,
     },
     {
       id: 9,
@@ -94,6 +110,8 @@ export function Menu() {
       title: "Napolitana",
       category: "🍕 Pizza",
       price: "R$ 45,00",
+      availability: true,
+      rating: 4.4,
     },
     {
       id: 10,
@@ -101,76 +119,8 @@ export function Menu() {
       title: "Rúcula com Tomate Seco",
       category: "🍕 Pizza",
       price: "R$ 52,00",
-    },
-    {
-      id: 11,
-      image: { img },
-      title: "Baiana",
-      category: "🍕 Pizza",
-      price: "R$ 48,00",
-    },
-    {
-      id: 12,
-      image: { img },
-      title: "Brócolis com Bacon",
-      category: "🍕 Pizza",
-      price: "R$ 53,00",
-    },
-    {
-      id: 13,
-      image: { img },
-      title: "Palmito",
-      category: "🍕 Pizza",
-      price: "R$ 46,00",
-    },
-    {
-      id: 14,
-      image: { img },
-      title: "Carne Seca com Catupiry",
-      category: "🍕 Pizza",
-      price: "R$ 58,00",
-    },
-    {
-      id: 15,
-      image: { img },
-      title: "Vegetariana",
-      category: "🍕 Pizza",
-      price: "R$ 47,00",
-    },
-    {
-      id: 16,
-      image: { img },
-      title: "Toscana",
-      category: "🍕 Pizza",
-      price: "R$ 49,00",
-    },
-    {
-      id: 17,
-      image: { img },
-      title: "Mexicana",
-      category: "🍕 Pizza",
-      price: "R$ 54,00",
-    },
-    {
-      id: 18,
-      image: { img },
-      title: "Alho e Óleo",
-      category: "🍕 Pizza",
-      price: "R$ 42,00",
-    },
-    {
-      id: 19,
-      image: { img },
-      title: "Provolone",
-      category: "🍕 Pizza",
-      price: "R$ 51,00",
-    },
-    {
-      id: 20,
-      image: { img },
-      title: "Camarão",
-      category: "🍕 Pizza",
-      price: "R$ 75,00",
+      availability: true,
+      rating: 4.0,
     }
   ]);
 
@@ -178,20 +128,17 @@ export function Menu() {
     {
       id: 1,
       image: { img },
-      title: "Pizza",
-      icon: "🍕",
+      title: "🍕 Pizza",
     },
     {
       id: 2,
       image: { img },
-      title: "Hambúrguer",
-      icon: "🍔",
+      title: "🍔 Hambúrguer",
     },
     {
       id: 3,
       image: { img },
-      title: "Outros",
-      icon: "🍟",
+      title: "🍟 Outros",
     },
   ]);
 
@@ -206,8 +153,16 @@ export function Menu() {
         />
 
         {isLoading && (
-          <div className="flex m-full h-full justify-center items-center">
-            <Spinner className="h-8 w-8 text-black-300 animate-spin fill-white-300" />
+          <div className="flex flex-col m-full h-full justify-center animate-pulse mx-5">
+              <div className="flex gap-3">
+                <div className="h-7 w-[10vw] bg-gray-0 rounded col-span-2 my-1"></div>
+                <div className="h-7 w-[5vw] bg-gray-0 rounded col-span-2 my-1"></div>
+              </div>
+              {Array.from({ length: 8 }).map((_, index) => (
+                <div key={index}>
+                  <div className="h-11 w-[85vw] bg-gray-0 rounded col-span-2 my-1 "></div>
+                </div>
+              ))}
           </div>
         )}
 
