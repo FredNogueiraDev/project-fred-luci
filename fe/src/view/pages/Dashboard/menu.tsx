@@ -8,13 +8,13 @@ import { MenuTable } from "./Tables/MenuTable";
 import { CategorieTable } from "./Tables/CategorieTable";
 
 import { useModalController } from "./Modals/useModalController";
-import { RefreshModal } from "./Modals/RefreshModal";
+import { CategoriesModal } from "./Modals/categoriesModal";
 
 import img from "../../../assets/images/img.png";
 import MenuIcon from "../../../assets/icons/menu.svg";
 
 export function Menu() {
-  const {handleOpenRefreshModal, handleCloseRefreshModal, isRefreshModalOpen} = useModalController();
+  const {handleOpenCategoriesModal, handleCloseCategoriesModal, isCategoriesModalOpen} = useModalController();
   const [activeTab, setActiveTab] = useState('products');
 
   const isLoading = false;
@@ -187,7 +187,15 @@ export function Menu() {
                     {activeTab === 'products' ? <span>{produtcts.length}</span> : <span>{categories.length}</span>}
                 </div>
               </div>
-              <a className="font-medium text-purple-normal text-sm" href="#" onClick={handleOpenRefreshModal}>
+              <a
+                className="font-medium text-purple-normal text-sm cursor-pointer"
+                href={activeTab === 'products' ? '#products' : '#categories'}
+                onClick={() =>
+                  activeTab === 'products'
+                    ? handleOpenCategoriesModal(undefined, undefined)
+                    : handleOpenCategoriesModal(undefined, undefined)
+                }
+                >
                 {activeTab === 'products' ? 'Novo Produto' : 'Nova Categoria'}
               </a>
             </div>
@@ -196,7 +204,7 @@ export function Menu() {
               {activeTab === 'products' ? <MenuTable data={produtcts} /> : <CategorieTable data={categories} />}
             </div>
 
-            <RefreshModal open={isRefreshModalOpen} onClose={handleCloseRefreshModal}/>
+            <CategoriesModal open={isCategoriesModalOpen} onClose={handleCloseCategoriesModal}/>
             <Footer />
           </div>
         )}
